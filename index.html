@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Block</title>
+  <script type="module" crossorigin src="/memory-block/assets/index-DID6CUnw.js"></script>
+  <link rel="stylesheet" crossorigin href="/memory-block/assets/index-C0J5Kwjs.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Memory Block</h1>
+
+    <!-- 블록 개수 선택 화면 -->
+    <div id="setup-screen">
+      <p class="setup-title">블록 개수를 선택하세요</p>
+      <div class="block-count-options">
+        <button class="count-btn" data-count="2">2개</button>
+        <button class="count-btn" data-count="3">3개</button>
+        <button class="count-btn" data-count="4">4개</button>
+        <button class="count-btn" data-count="5">5개</button>
+        <button class="count-btn" data-count="6">6개</button>
+      </div>
+    </div>
+
+    <!-- 게임 화면 -->
+    <div id="game-screen" class="hidden">
+      <div class="score-board">
+        <span>현재 레벨: <span id="level">1</span></span>
+        <span>최고 기록: <span id="high-score">0</span></span>
+      </div>
+      <div class="blocks" id="blocks-container"></div>
+      <div class="message" id="message"></div>
+      <button id="start-btn">게임 시작</button>
+    </div>
+
+    <!-- 게임 오버 오버레이 -->
+    <div id="gameover-overlay" class="hidden">
+      <div class="gameover-box">
+        <h2>GAME OVER</h2>
+        <p id="gameover-level"></p>
+        <p id="gameover-record" class="hidden"></p>
+        <button id="retry-btn">다시 하기</button>
+        <button id="back-btn">블록 선택으로</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
