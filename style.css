@@ -1,0 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.game-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* 선택 화면 */
+.setup-title {
+  color: #ccc;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.block-count-options {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.count-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.count-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(155, 89, 182, 0.4);
+  border-color: #9b59b6;
+}
+
+.count-btn:active {
+  transform: translateY(0);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 게임 화면 */
+.score-board {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.score-board span {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.blocks {
+  display: grid;
+  gap: 15px;
+  margin: 0 auto 1.5rem;
+  justify-content: center;
+}
+
+.blocks.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 320px; }
+.blocks.cols-3 { grid-template-columns: repeat(3, 1fr); max-width: 480px; }
+
+.block {
+  width: 130px;
+  height: 130px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.1s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.block:hover {
+  transform: scale(1.02);
+}
+
+.block:active {
+  transform: scale(0.98);
+}
+
+.block.active {
+  filter: brightness(1.8);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+.block.disabled {
+  pointer-events: none;
+}
+
+.message {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  min-height: 1.5rem;
+}
+
+#start-btn {
+  background: linear-gradient(145deg, #9b59b6, #8e44ad);
+  color: #fff;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#start-btn:active {
+  transform: translateY(0);
+}
+
+#start-btn:disabled {
+  background: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 게임 오버 오버레이 */
+#gameover-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gameover-box {
+  background: linear-gradient(135deg, #2c1654, #1a1a2e);
+  border: 2px solid rgba(231, 76, 60, 0.6);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(231, 76, 60, 0.3);
+}
+
+.gameover-box h2 {
+  color: #e74c3c;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+}
+
+.gameover-box p {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#gameover-record {
+  color: #f1c40f;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.gameover-box button {
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.gameover-box button:hover {
+  transform: translateY(-2px);
+}
+
+#retry-btn {
+  background: linear-gradient(145deg, #9b59b6, #8e44ad);
+}
+
+#back-btn {
+  background: linear-gradient(145deg, #555, #444);
+}
