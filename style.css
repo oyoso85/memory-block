@@ -88,8 +88,8 @@ h1 {
   justify-content: center;
 }
 
-.blocks.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 320px; }
-.blocks.cols-3 { grid-template-columns: repeat(3, 1fr); max-width: 480px; }
+.blocks.cols-2 { grid-template-columns: repeat(2, auto); }
+.blocks.cols-3 { grid-template-columns: repeat(3, auto); }
 
 .block {
   width: 130px;
@@ -115,6 +115,10 @@ h1 {
 
 .block.disabled {
   pointer-events: none;
+}
+
+.block.gray {
+  background: linear-gradient(145deg, #555, #444) !important;
 }
 
 .message {
@@ -149,6 +153,29 @@ h1 {
   background: #666;
   cursor: not-allowed;
   transform: none;
+}
+
+.game-buttons {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+#back-to-setup-btn {
+  background: linear-gradient(145deg, #555, #444);
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#back-to-setup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* 게임 오버 오버레이 */
@@ -221,4 +248,84 @@ h1 {
 
 #back-btn {
   background: linear-gradient(145deg, #555, #444);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 480px) {
+  .game-container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .block-count-options {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .count-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem;
+  }
+
+  .score-board {
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .score-board span {
+    padding: 0.4rem 0.7rem;
+  }
+
+  .blocks {
+    gap: 10px;
+  }
+
+
+  .block {
+    width: 95px;
+    height: 95px;
+    border-radius: 12px;
+  }
+
+  .message {
+    font-size: 1rem;
+  }
+
+  #start-btn,
+  #back-to-setup-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .gameover-box {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+  }
+
+  .gameover-box h2 {
+    font-size: 1.8rem;
+  }
+
+  .gameover-box p {
+    font-size: 1rem;
+  }
+
+  .gameover-box button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .block {
+    width: 80px;
+    height: 80px;
+  }
+
 }

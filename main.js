@@ -10,6 +10,7 @@ const gameoverLevel = document.getElementById('gameover-level');
 const gameoverRecord = document.getElementById('gameover-record');
 const retryBtn = document.getElementById('retry-btn');
 const backBtn = document.getElementById('back-btn');
+const backToSetupBtn = document.getElementById('back-to-setup-btn');
 
 let blockCount = 4;
 let blocks = [];
@@ -70,7 +71,7 @@ function createBlocks(count) {
 
   for (let i = 0; i < count; i++) {
     const block = document.createElement('div');
-    block.className = 'block';
+    block.className = 'block gray disabled';
     block.dataset.index = i;
     block.style.background = `linear-gradient(145deg, ${blockColors[i][0]}, ${blockColors[i][1]})`;
     block.addEventListener('click', handleBlockClick);
@@ -180,6 +181,10 @@ function startGame() {
 
   levelDisplay.textContent = level;
   startBtn.disabled = true;
+  backToSetupBtn.classList.add('hidden');
+
+  // 회색 해제
+  blocks.forEach(block => block.classList.remove('gray'));
 
   addToSequence();
   showSequence();
@@ -235,6 +240,11 @@ retryBtn.addEventListener('click', () => {
 
 backBtn.addEventListener('click', () => {
   gameoverOverlay.classList.add('hidden');
+  gameScreen.classList.add('hidden');
+  setupScreen.classList.remove('hidden');
+});
+
+backToSetupBtn.addEventListener('click', () => {
   gameScreen.classList.add('hidden');
   setupScreen.classList.remove('hidden');
 });
